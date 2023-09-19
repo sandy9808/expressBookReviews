@@ -22,13 +22,20 @@ public_users.post("/register", (req,res) => {
 });
 
 // Get the book list available in the shop
-public_users.get('/',function (req, res) {
-  let get_books=new Promise((resolve,reject)=>{
-    resolve(res.send(books));
-  });
-  get_books.then((data)=>{
-    console.log("Promise for Task 10 is resolved")
-  });
+public_users.get('/', async function (req, res) {
+  try {
+    const get_books = () => {
+      return new Promise((resolve) => {
+        resolve(res.send(books));
+      });
+    };
+
+    await get_books();
+    console.log("Promise for Task 10 is resolved");
+  } catch (error) {
+    // Handle any errors here
+    console.error("An error occurred:", error);
+  }
 });
 
 // Get book details based on ISBN
