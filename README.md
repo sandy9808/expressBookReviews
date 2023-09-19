@@ -1,1 +1,1 @@
-# coding-project-template
+# Making a Book Review application's API
